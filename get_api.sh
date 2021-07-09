@@ -1,9 +1,11 @@
 #!/bin/bash
 
 while IFS= read -r LINE; do
-	wget -O filename https://blockchain.info/rawtx/$line
-	var=`python json_parser.py filename >> output.csv`
-	echo $var
+	if (( -f api_output.json)); then
+		rm api_output.json
+	fi
+	wget -O api_output.json https://blockchain.info/rawtx/$line
+	python json_parser.py filename >> output.csv
 done < $1
 
 
