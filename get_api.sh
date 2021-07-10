@@ -11,7 +11,7 @@ while IFS= read -r LINE; do
 	# if the file api_output.json exists, delete it; this ensures that the
 	# wget command below will write to a new file for processing (prevents
 	# re-processing of the same info)
-	if (( -f api_output.json)); then
+	if [[ -e api_output.json ]]; then
 		rm api_output.json
 	fi
 	
@@ -20,7 +20,7 @@ while IFS= read -r LINE; do
 
 	# feed the output to a Python program written to parse it and redirect
 	# output to a CSV
-	python json_parser.py filename >> output.csv
+	python json_parser.py api_output.json >> output.csv
 
 # read from the first positional argument, which will be a file of BitCoin
 # block hashes
