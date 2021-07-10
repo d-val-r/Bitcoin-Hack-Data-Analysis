@@ -1,10 +1,18 @@
 import json, pandas, sys
 
+# the file provided to this script will be the JSON data
 file = open(sys.argv[1], 'r')
+
+# load the data into a dictionary
 json_dict = json.load(file)
 
+# flatted the dictionary (reduce the amount of nested objects)
 df = pandas.json_normalize(json_dict)
 
+
+
+# despite flattening the dictionary, many required values are still inside
+# nested objects; the variables below grab those values
 vin_sz = df['vin_sz'][0]
 
 size = df['size'][0]
@@ -27,6 +35,8 @@ value = df['out'][0][0]['value']
 spending_outpoints = df['out'][0][0]['spending_outpoints'][0]['n']
 
 
+# format the output and print it to console; the output can be printed to a file
+# via bash terminal redirects (eg. python json_parser.py input_file >> output_file)
 print("{},{},{},{},{},{},{},{},{}".format(vin_sz, size, weight, fee, time, block_index,\
         block_height, value, spending_outpoints))
 
