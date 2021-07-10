@@ -1,12 +1,15 @@
 file = open("shuffled.csv")
 
-current = []
 count = 0
 for line in file:
     current = line.split(",")
+    # the 11th (10th index)  column in the list formed by 
+    # splitting the CSV line is 1 if the transaction was illigitimate/malicious
     if (current[10] == '1'):
         count += 1
 
+
+# output the number of malicious entries
 print(count)
 
 
