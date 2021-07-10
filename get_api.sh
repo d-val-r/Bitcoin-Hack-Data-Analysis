@@ -1,5 +1,9 @@
 #!/bin/bash
 
+
+# A script to pull information about transactions from the blockchain API
+# Written by David Rudenya, last updated 07/10/21
+
 # this while loop will read the provided file, which will be a list of
 # BitCoin block hashes, one hash per line
 while IFS= read -r LINE; do

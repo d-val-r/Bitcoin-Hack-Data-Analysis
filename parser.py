@@ -1,3 +1,8 @@
+# A script that counts the total number of malicious entries in a CSV of 
+# BitCoin transactions
+# Written by David Rudenya, last updated 07/10/21
+
+
 file = open("shuffled.csv")
 
 count = 0

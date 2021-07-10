@@ -1,5 +1,13 @@
 #!/bin/bash
 
+
+# A script that shuffles and parses 5000 lines of input from a large file of
+# BitCoin transactions; for the purposes of the project, at least one
+# malicious entry was needed in the input for comparison with legitimate 
+# transactions
+# Written by David Rudenya, last updated 07/10/21
+
+
 # save the output of running the parser.py script to a variable
 parse_output=`python parser.py`
 

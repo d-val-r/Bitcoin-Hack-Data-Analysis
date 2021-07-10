@@ -1,3 +1,7 @@
+# A script to get the hashes of block transactions out of a CSV
+# Written by David Rudenya, last updated 07/10/21
+
+
 file = open("shuffled.csv")
 
 # the input file is a CSV whose first entry is the hash of the block
