@@ -38,7 +38,10 @@ block_height = df['block_height'][0]
 
 value = df['out'][0][0]['value']
 
-spending_outpoints = df['out'][0][0]['spending_outpoints'][0]['n']
+if (len(df['out'][0][0]['spending_outpoints']) > 0):
+    spending_outpoints = df['out'][0][0]['spending_outpoints'][0]['n']
+else:
+    spending_outpoints = 0
 
 
 # format the output and print it to console; the output can be printed to a file
