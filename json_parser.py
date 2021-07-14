@@ -38,10 +38,13 @@ block_height = df['block_height'][0]
 
 value = df['out'][0][0]['value']
 
+# the list inside the JSON data at the location below may be empty; if not,
+# extract the data; otherwise, default to a value of -1, which is impossible
+# to obtain otherwise
 if (len(df['out'][0][0]['spending_outpoints']) > 0):
     spending_outpoints = df['out'][0][0]['spending_outpoints'][0]['n']
 else:
-    spending_outpoints = 0
+    spending_outpoints = -1
 
 
 # format the output and print it to console; the output can be printed to a file
