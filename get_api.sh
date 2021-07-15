@@ -16,11 +16,20 @@ while IFS= read -r LINE; do
 	fi
 	
 	# get the output of the api and store it in the file api_output.json
-	wget -O api_output.json "https://blockchain.info/rawtx/$LINE"
+	response=`wget -O api_output.json "https://blockchain.info/rawtx/$LINE"`
 
 	# feed the output to a Python program written to parse it and redirect
 	# output to a CSV
-	python json_parser.py api_output.json >> output.csv
+
+
+	# the response from running the wget command is read as false if it
+	# succeeds, so negate the response to check if it worked; otherwise,
+	# echo the failed link to an outside file
+	if ! [[ $response ]]; then
+		python json_parser.py api_output.json >> example_output.csv
+	else
+		echo "https://blockchain.info/rawtx/$LINE" >> issues_404.txt
+	fi
 
 # read from the first positional argument, which will be a file of BitCoin
 # block hashes
