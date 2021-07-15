@@ -16,7 +16,7 @@ while IFS= read -r LINE; do
 	fi
 	
 	# get the output of the api and store it in the file api_output.json
-	response=`wget -O api_output.json "https://blockchain.info/rawtx/$LINE"`
+	response=`wget -O api_output.json https://blockchain.info/rawtx/$LINE
 
 	# feed the output to a Python program written to parse it and redirect
 	# output to a CSV
@@ -26,7 +26,7 @@ while IFS= read -r LINE; do
 	# succeeds, so negate the response to check if it worked; otherwise,
 	# echo the failed link to an outside file
 	if ! [[ $response ]]; then
-		python json_parser.py api_output.json >> example_output.csv
+		python json_parser.py api_output.json >> output.csv
 	else
 		echo "https://blockchain.info/rawtx/$LINE" >> issues_404.txt
 	fi
