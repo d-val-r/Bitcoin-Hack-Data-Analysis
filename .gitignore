@@ -12,5 +12,11 @@ hashes_3.txt
 hashes_4.txt
 hashes_5.txt
 finder.py
+finder.sh
 tester.csv
-*.txt
+clean_output.csv
+cleaned_output.csv
+duplicate_finder.py
+duplicates.txt
+training_data.csv
+malicious_data.csv
