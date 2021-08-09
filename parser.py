@@ -18,4 +18,3 @@ for line in file:
 print(count)
 
 
-
