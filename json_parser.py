@@ -1,6 +1,6 @@
 # A script to read the JSON data of the blockchain API output and output
 # selected values
-# Written by David Rudenya, last updated 07/10/21
+# Written by David Rudenya, last updated 08/10/21
 
 
 
