@@ -20,6 +20,9 @@ df = pandas.json_normalize(json_dict)
 # despite flattening the dictionary, many required values are still inside
 # nested objects; the variables below grab those values
 vin_sz = df['vin_sz'][0]
+vout_sz = df['vout_sz'][0]
+
+
 
 size = df['size'][0]
 
@@ -36,19 +39,30 @@ block_index = df['block_index'][0]
 
 block_height = df['block_height'][0]
 
-value = df['out'][0][0]['value']
+value_0 = df['out'][0][0]['value']
+value_1 = df['out'][0][1]['value']
+prev_out_value = df['inputs'][0][0]['prev_out']['value']
+tx_index = df['inputs'][0][0]['prev_out']['tx_index']
 
 # the list inside the JSON data at the location below may be empty; if not,
 # extract the data; otherwise, default to a value of -1, which is impossible
 # to obtain otherwise
 if (len(df['out'][0][0]['spending_outpoints']) > 0):
-    spending_outpoints = df['out'][0][0]['spending_outpoints'][0]['n']
+    spending_outpoints_0 = df['out'][0][0]['spending_outpoints'][0]['n']
 else:
-    spending_outpoints = -1
+    spending_outpoints_0 = -1
+
+
+
+if (len(df['out'][0][1]['spending_outpoints']) > 0):
+    spending_outpoints_1 = df['out'][0][1]['spending_outpoints'][0]['n']
+else:
+    spending_outpoints_1 = -1
 
 
 # format the output and print it to console; the output can be printed to a file
 # via bash terminal redirects (eg. python json_parser.py input_file >> output_file)
-print("{},{},{},{},{},{},{},{},{}".format(vin_sz, size, weight, fee, time, block_index,\
-        block_height, value, spending_outpoints))
+print("{},{},{},{},{},{},{},{},{},{},{},{},{},{}".format(vin_sz, vout_sz, size, weight, fee, time, block_index,\
+        block_height, value_0, value_1, prev_out_value, tx_index,  spending_outpoints_0, spending_outpoints_1))
+
 
