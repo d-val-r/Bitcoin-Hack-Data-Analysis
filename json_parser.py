@@ -40,9 +40,21 @@ block_index = df['block_index'][0]
 block_height = df['block_height'][0]
 
 value_0 = df['out'][0][0]['value']
-value_1 = df['out'][0][1]['value']
-prev_out_value = df['inputs'][0][0]['prev_out']['value']
-tx_index = df['inputs'][0][0]['prev_out']['tx_index']
+
+if (len(df['out'][0]) > 1):
+	value_1 = df['out'][0][1]['value']
+else:
+	value_1 = -1
+
+if (df['inputs'][0][0]['prev_out']):
+	prev_out_value = df['inputs'][0][0]['prev_out']['value']
+else:
+	prev_out_value = -1  
+
+if (df['inputs'][0][0]['prev_out']):
+	tx_index = df['inputs'][0][0]['prev_out']['tx_index']
+else:
+	tx_index = -1
 
 # the list inside the JSON data at the location below may be empty; if not,
 # extract the data; otherwise, default to a value of -1, which is impossible
@@ -54,7 +66,7 @@ else:
 
 
 
-if (len(df['out'][0][1]['spending_outpoints']) > 0):
+if (len(df['out'][0]) > 1 and len(df['out'][0][1]['spending_outpoints']) > 0):
     spending_outpoints_1 = df['out'][0][1]['spending_outpoints'][0]['n']
 else:
     spending_outpoints_1 = -1
