@@ -1,8 +1,9 @@
 #!/bin/bash
-
-
 # A script to pull information about transactions from the blockchain API
 # Written by David Rudenya, last updated 07/10/21
+
+
+count=0
 
 # this while loop will read the provided file, which will be a list of
 # BitCoin block hashes, one hash per line
@@ -21,15 +22,18 @@ while IFS= read -r LINE; do
 	# feed the output to a Python program written to parse it and redirect
 	# output to a CSV
 
+	python json_parser.py api_output.json >> comparison.csv
 
-	# the response from running the wget command is read as false if it
-	# succeeds, so negate the response to check if it worked; otherwise,
-	# echo the failed link to an outside file
-	if ! [[ $response ]]; then
-		python json_parser.py api_output.json >> output.csv
-	else
-		echo "https://blockchain.info/rawtx/$LINE" >> issues_404.txt
+	# to avoid overloading the Internet connection, sleep the program
+	# at select intervals to give the machine a chance to quickly 
+	# recover from massive amounts of file downloads
+	if [[ $count == 20 ]]; then
+		sleep 1
+	elif [[ $count == 100 ]]; then
+		sleep 10
 	fi
+
+	count=$(( $count + 1 ))
 
 # read from the first positional argument, which will be a file of BitCoin
 # block hashes
