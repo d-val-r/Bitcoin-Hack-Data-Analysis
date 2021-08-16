@@ -30,3 +30,7 @@ api_loop.sh
 dates.txt
 malicious_hashes.txt
 hashes_for_comparison.txt
+charter.ipynb
+comparison.csv
+filename.json
+headers.txt
