@@ -17,12 +17,14 @@ while IFS= read -r LINE; do
 	fi
 	
 	# get the output of the api and store it in the file api_output.json
-	response=`wget -O api_output.json https://blockchain.info/rawtx/$LINE`
+	wget -O api_output.json https://blockchain.info/rawtx/$LINE
 
 	# feed the output to a Python program written to parse it and redirect
 	# output to a CSV
 
-	python json_parser.py api_output.json >> output.csv
+	response=`python json_parser.py api_output.json`
+
+	echo "$response,$LINE" >> output.csv
 
 	# to avoid overloading the Internet connection, sleep the program
 	# at select intervals to give the machine a chance to quickly 
