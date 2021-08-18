@@ -22,7 +22,7 @@ while IFS= read -r LINE; do
 	# feed the output to a Python program written to parse it and redirect
 	# output to a CSV
 
-	python json_parser.py api_output.json >> comparison.csv
+	python json_parser.py api_output.json >> output.csv
 
 	# to avoid overloading the Internet connection, sleep the program
 	# at select intervals to give the machine a chance to quickly 
