@@ -1,9 +1,10 @@
 # A script that counts the total number of malicious entries in a CSV of 
 # BitCoin transactions
 # Written by David Rudenya, last updated 07/10/21
+import sys
 
 
-file = open("shuffled.csv")
+file = open(sys.argv[1], 'r')
 
 count = 0
 for line in file:
