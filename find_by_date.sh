@@ -4,5 +4,9 @@
 while IFS= read -r line; do
 	# format of the cat file is:
 	# input_hash,output_hash,datetime,amount_bitcoins
-	cat data_files/clean_btc_tx_2011_2013.csv | grep $line | awk -F "," '{print $1}' >> $line.csv
+
+	# format of the output is "hash,datestamp"
+	cat data_files/clean_btc_tx_2011_2013.csv | grep $line | awk -F "," '{print $1, $3}' | awk '{print ($1"," $2)}' >> $line.csv
+
+
 done < $1
