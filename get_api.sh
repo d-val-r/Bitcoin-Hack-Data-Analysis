@@ -1,6 +1,6 @@
 #!/bin/bash
 # A script to pull information about transactions from the blockchain API
-# Written by David Rudenya, last updated 07/10/21
+# Written by David Rudenya
 
 
 count=0
@@ -24,6 +24,8 @@ while IFS= read -r LINE; do
 
 	response=`python json_parser.py api_output.json`
 
+
+	# prints the reponse followed by the hash to the output files
 	echo "$response,$LINE" >> output.csv
 
 	# to avoid overloading the Internet connection, sleep the program
