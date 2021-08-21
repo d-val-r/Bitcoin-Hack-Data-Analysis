@@ -13,9 +13,9 @@ for line in $output; do
 	# store just the filename
 	filename=`ls -al data_files/csv_files/ | grep $line | awk '{print $9}'`
 	
-	# shuffle 227 random lines from the file and print them into a new
+	# shuffle 454 random lines from the file and print them into a new
 	# file named "{date}_hashes.csv"
-	shuf -n 227 data_files/csv_files/$filename >> data_files/csv_files/$line\_hashes.csv
+	shuf -n 454 data_files/csv_files/$filename >> data_files/csv_files/$line\_hashes.csv
 
 	# find malicious hashes with matching dates from the below file and append them
 	# to the file just created; this will later be sorted by date/time
