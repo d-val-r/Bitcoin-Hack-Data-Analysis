@@ -6,7 +6,7 @@
 count=0
 
 # this while loop will read the provided file, which will be a list of
-# BitCoin block hashes, one hash per line
+# BitCoin block hashes and dates at which they occur
 while IFS= read -r LINE; do
 
 	# if the file api_output.json exists, delete it; this ensures that the
@@ -16,17 +16,20 @@ while IFS= read -r LINE; do
 		rm api_output.json
 	fi
 	
+	# grab the hash and date from the input
+	hash=`echo $LINE | awk -F "," '{print $1}'` 
+	date=`echo $LINE | awk -F "," '{print $2}'`
+	
 	# get the output of the api and store it in the file api_output.json
-	wget -O api_output.json https://blockchain.info/rawtx/$LINE
+	wget -O api_output.json https://blockchain.info/rawtx/$hash
 
 	# feed the output to a Python program written to parse it and redirect
 	# output to a CSV
 
 	response=`python json_parser.py api_output.json`
 
-
-	# prints the reponse followed by the hash to the output files
-	echo "$response,$LINE" >> output.csv
+	# prints the reponse followed by the hash and date
+	echo "$response,$hash,$date" >> output.csv
 
 	# to avoid overloading the Internet connection, sleep the program
 	# at select intervals to give the machine a chance to quickly 
