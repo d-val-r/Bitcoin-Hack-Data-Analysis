@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# A script to shuffle hashes that are sorted by date; used to
+# A script to shuffle hashes that are sorted by date/time; used to
 # grab random subsets of the hashes
 
 # all csvs in the data_files folder start with 20 (for the year); pipe the 
@@ -17,8 +17,8 @@ for line in $output; do
 	# file named "{date}_hashes.csv"
 	shuf -n 227 data_files/csv_files/$filename >> data_files/csv_files/$line\_hashes.csv
 
-	# find malicious hashes and dates from the below file and append them
-	# to the file just created; this will later be sorted by date
+	# find malicious hashes with matching dates from the below file and append them
+	# to the file just created; this will later be sorted by date/time
 	cat data_files/csv_files/malicious_hashes_and_dates.csv | grep $line >> data_files/csv_files/$line\_hashes.csv
 
 done;
