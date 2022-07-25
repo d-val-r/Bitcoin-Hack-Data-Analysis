@@ -13,4 +13,5 @@ The various files in this project are comprised of Python and bash scripts that 
 (charter.ipynb). The graphs are saved in this Jupyter notebook and can be viewed in the browser by clicking on the file and scrolling down to the output.
 
 # Results
-The resultant charts show that various metadata in malicious blocks displays irregular patterns when compared to legitimate transactions.
+The resultant charts show that various metadata in malicious blocks displays irregular patterns when compared to legitimate transactions. However, not all
+metadata indicates any sort of outlier. Several of the graphs show that there is not meaningful change in metadata between legitimate and illegitimate blocks.
