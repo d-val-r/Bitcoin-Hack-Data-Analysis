@@ -14,4 +14,4 @@ The various files in this project are comprised of Python and bash scripts that 
 
 # Results
 The resultant charts show that various metadata in malicious blocks displays irregular patterns when compared to legitimate transactions. However, not all
-metadata indicates any sort of outlier. Several of the graphs show that there is not meaningful change in metadata between legitimate and illegitimate blocks.
+metadata indicates any sort of outlier. Several of the graphs show that there is no meaningful change in certain metadata between legitimate and illegitimate blocks.
