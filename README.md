@@ -5,8 +5,9 @@ this study is NOT to expose hacking attempts, but to analyze changes in block me
 
 # Goal
 The final output of the study is a series of graphs detailing the changes in metadata across legimiate and malicious blocks in the blockchain.
-The graphs are scatter plots where the independent variable (the x-axis) is comprised of individual blocks, ordered chronologically by date and time. Blue dots
-represent legitimate transactions, and red dots indicate hacking attempts. 
+The graphs are scatter plots where the independent variable (the x-axis) is comprised of individual blocks, ordered chronologically by date and time.
+The dependent variable (y-axis) is a given piece of metadata, indicated by the title of each chart ("metadata over time" where metadata is the name of
+the data). Blue dots represent legitimate transactions, and red dots indicate hacking attempts. 
 
 # Contents
 The various files in this project are comprised of Python and bash scripts that organize and prune the data in preparation for analysis in the charter Jypter notebook
